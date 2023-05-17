@@ -1,4 +1,8 @@
 /*
+
+   *****plasma Pierce Height Fixed by pixie-wrangler-irl*****
+   pierce height should NOT be "pierce clearance". It should be 
+   
    Custom Post-Processor for GRBL based Openbuilds-style CNC machines, router and laser-cutting
    Made possible by
    Swarfer  https://github.com/swarfer/GRBL-Post-Processor
@@ -1454,6 +1458,7 @@ function onParameter(name, value)
          cuttingMode = 'cut';
       }
    // (onParameter =operation:pierceClearance= 1.5)    for plasma
+ /*
    if (name == 'operation:pierceClearance')
       {
       if (properties.plasma_pierceHeightoverride)
@@ -1461,6 +1466,11 @@ function onParameter(name, value)
       else
          plasma_pierceHeight = value;
       }
+  */
+      
+   if (name == 'operation:entry_distance') // here is fixed pierce height that actually works correctly.
+      plasma_pierceHeight = value;
+      
    if ((name == 'action') && (value == 'pierce'))
       {
       if (debugMode) writeComment('action pierce');
